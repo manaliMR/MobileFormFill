@@ -54,7 +54,7 @@ class ViewController: UIViewController {
         default: print("Nothing selected")
             
         }
-
+        
     }
     
     func updateSkills(skill : String) {
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
     
     @IBAction func SaveData(_ sender: UIButton) {
         
-    
+        
         let name = fullNameTextField.text
         let email = emailTextField.text
         let password = passwordTextField.text
@@ -88,24 +88,26 @@ class ViewController: UIViewController {
         data.skills = skillSet.map { String($0) }.joined(separator: ", ")
         
         // validate Email
+        
         if email!.isValidEmail {
             data.email = email
-         } else {
-           let alertController = UIAlertController(title: "Oops", message: "email not valid", preferredStyle: UIAlertController.Style.alert)
-           alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        } else {
+            let alertController = UIAlertController(title: "Oops", message: "email not valid", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
             return
         }
         
         //validate Password
-         if password!.isValidPassword {
-                   print("valid password")
-               } else {
-                let alertController = UIAlertController(title: "Oops", message: "Password must contain one uppercase, one lowercase, one special character and must be between 8 to 16 ", preferredStyle: UIAlertController.Style.alert)
-                   alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-                  self.present(alertController, animated: true, completion: nil)
-                 return
-            }
+        
+        if password!.isValidPassword {
+            print("valid password")
+        } else {
+            let alertController = UIAlertController(title: "Oops", message: "Password must contain one uppercase, one lowercase, one special character and must be between 8 to 16 ", preferredStyle: UIAlertController.Style.alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+            return
+        }
         appDelegate.saveContext()
     }
     
@@ -137,19 +139,14 @@ class ViewController: UIViewController {
 }
 
 
- // Extension to Validate email and password
+// Extension to Validate email and password
 extension String {
-   var isValidEmail: Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3}"
-        let emailText = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+    var isValidEmail: Bool {
+        let emailText = NSPredicate(format: "SELF MATCHES %@", "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3}")
         return emailText.evaluate(with: self)
-   }
-//
+    }
     var isValidPassword: Bool {
         let passwrdRegEx = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,16}")
-        //^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,16}
-        //"^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.[!@#$%^&*]){8,16}")
-        ///^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/
         return passwrdRegEx.evaluate(with: self)
     }
 }
@@ -173,7 +170,6 @@ extension ViewController: UITextFieldDelegate {
         }
         return true
     }
-    
 }
 
 
