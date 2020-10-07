@@ -7,22 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D142EF58252D61740083EDEC /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142EF57252D61740083EDEC /* DetailViewController.swift */; };
+		D142EF5A252D663D0083EDEC /* DetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D142EF59252D663D0083EDEC /* DetailViewCell.swift */; };
+		D1990FF1252D3A230005B028 /* DataForm.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1990FEF252D3A230005B028 /* DataForm.xcdatamodeld */; };
 		D1CB0D19252D2BD600B3DFFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CB0D18252D2BD600B3DFFB /* AppDelegate.swift */; };
 		D1CB0D1B252D2BD600B3DFFB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CB0D1A252D2BD600B3DFFB /* SceneDelegate.swift */; };
 		D1CB0D1D252D2BD600B3DFFB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CB0D1C252D2BD600B3DFFB /* ViewController.swift */; };
 		D1CB0D20252D2BD600B3DFFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1CB0D1E252D2BD600B3DFFB /* Main.storyboard */; };
-		D1CB0D23252D2BD700B3DFFB /* MobileFormFill.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1CB0D21252D2BD700B3DFFB /* MobileFormFill.xcdatamodeld */; };
 		D1CB0D25252D2BD900B3DFFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D1CB0D24252D2BD900B3DFFB /* Assets.xcassets */; };
 		D1CB0D28252D2BD900B3DFFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D1CB0D26252D2BD900B3DFFB /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D142EF57252D61740083EDEC /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		D142EF59252D663D0083EDEC /* DetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewCell.swift; sourceTree = "<group>"; };
+		D1990FF0252D3A230005B028 /* DataForm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataForm.xcdatamodel; sourceTree = "<group>"; };
 		D1CB0D15252D2BD600B3DFFB /* MobileFormFill.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MobileFormFill.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1CB0D18252D2BD600B3DFFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D1CB0D1A252D2BD600B3DFFB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D1CB0D1C252D2BD600B3DFFB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D1CB0D1F252D2BD600B3DFFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D1CB0D22252D2BD700B3DFFB /* MobileFormFill.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MobileFormFill.xcdatamodel; sourceTree = "<group>"; };
 		D1CB0D24252D2BD900B3DFFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D1CB0D27252D2BD900B3DFFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D1CB0D29252D2BD900B3DFFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -65,7 +69,9 @@
 				D1CB0D24252D2BD900B3DFFB /* Assets.xcassets */,
 				D1CB0D26252D2BD900B3DFFB /* LaunchScreen.storyboard */,
 				D1CB0D29252D2BD900B3DFFB /* Info.plist */,
-				D1CB0D21252D2BD700B3DFFB /* MobileFormFill.xcdatamodeld */,
+				D1990FEF252D3A230005B028 /* DataForm.xcdatamodeld */,
+				D142EF57252D61740083EDEC /* DetailViewController.swift */,
+				D142EF59252D663D0083EDEC /* DetailViewCell.swift */,
 			);
 			path = MobileFormFill;
 			sourceTree = "<group>";
@@ -143,8 +149,10 @@
 			files = (
 				D1CB0D1D252D2BD600B3DFFB /* ViewController.swift in Sources */,
 				D1CB0D19252D2BD600B3DFFB /* AppDelegate.swift in Sources */,
-				D1CB0D23252D2BD700B3DFFB /* MobileFormFill.xcdatamodeld in Sources */,
+				D142EF58252D61740083EDEC /* DetailViewController.swift in Sources */,
+				D142EF5A252D663D0083EDEC /* DetailViewCell.swift in Sources */,
 				D1CB0D1B252D2BD600B3DFFB /* SceneDelegate.swift in Sources */,
+				D1990FF1252D3A230005B028 /* DataForm.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,13 +352,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D1CB0D21252D2BD700B3DFFB /* MobileFormFill.xcdatamodeld */ = {
+		D1990FEF252D3A230005B028 /* DataForm.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D1CB0D22252D2BD700B3DFFB /* MobileFormFill.xcdatamodel */,
+				D1990FF0252D3A230005B028 /* DataForm.xcdatamodel */,
 			);
-			currentVersion = D1CB0D22252D2BD700B3DFFB /* MobileFormFill.xcdatamodel */;
-			path = MobileFormFill.xcdatamodeld;
+			currentVersion = D1990FF0252D3A230005B028 /* DataForm.xcdatamodel */;
+			path = DataForm.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
