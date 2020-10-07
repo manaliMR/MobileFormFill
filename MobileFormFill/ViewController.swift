@@ -67,26 +67,13 @@ class ViewController: UIViewController {
     
     @IBAction func SaveData(_ sender: UIButton) {
         
-        
-//        if passwordTextField.text!.isValidPassword {
-//            print("valid password")
-//        } else {
-//            let alertController = UIAlertController(title: "Oops", message: "Password must contain one uppercase, one lowercase, one special character and must be between 8 to 16 ", preferredStyle: UIAlertController.Style.alert)
-//            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-//            self.present(alertController, animated: true, completion: nil)
-//            return
-//
-//        }
-//
-        
+    
         let name = fullNameTextField.text
         let email = emailTextField.text
         let password = passwordTextField.text
         
         
         // validate input fields
-        
-        //validatePassword(paswrd: password)
         
         if name == "" || email == "" || password == "" || (maleButton.isSelected == false && femaleButton.isSelected == false && otherButton.isSelected == false) || (javabutton.isSelected == true && swiftButton.isSelected == true  && kotlinButton.isSelected == true && reactButton.isSelected == true && flutterButton.isSelected == true && reactButton.isSelected == true) {
             let alertController = UIAlertController(title: "Oops", message: "Please note that all fields are required.", preferredStyle: UIAlertController.Style.alert)
@@ -100,6 +87,7 @@ class ViewController: UIViewController {
         data.gender = genderSelected
         data.skills = skillSet.map { String($0) }.joined(separator: ", ")
         
+        // validate Email
         if email!.isValidEmail {
             data.email = email
          } else {
@@ -109,6 +97,7 @@ class ViewController: UIViewController {
             return
         }
         
+        //validate Password
          if password!.isValidPassword {
                    print("valid password")
                } else {
@@ -116,9 +105,7 @@ class ViewController: UIViewController {
                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
                   self.present(alertController, animated: true, completion: nil)
                  return
-        
             }
-    
         appDelegate.saveContext()
     }
     
@@ -149,6 +136,8 @@ class ViewController: UIViewController {
     }
 }
 
+
+ // Extension to Validate email and password
 extension String {
    var isValidEmail: Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{3}"
@@ -157,7 +146,9 @@ extension String {
    }
 //
     var isValidPassword: Bool {
-        let passwrdRegEx = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,16}") //"^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.[!@#$%^&*]){8,16}")
+        let passwrdRegEx = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,16}")
+        //^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,16}
+        //"^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.[!@#$%^&*]){8,16}")
         ///^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?])[A-Za-z\d#$@!%&*?]{8,30}$/
         return passwrdRegEx.evaluate(with: self)
     }
