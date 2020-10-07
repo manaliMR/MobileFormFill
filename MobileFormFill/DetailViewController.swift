@@ -11,13 +11,18 @@ import UIKit
 
 class DetailViewController: UITableViewController {
     
-    var dataList = [DataForm]()
-   private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    // MARK:- IBOutlets
     
     @IBOutlet var detailTableView: UITableView!
     
-     override func viewDidLoad() {
-       super.viewDidLoad()
+    // MARK:- Declaring Variables
+    
+    var dataList = [DataForm]()
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         loadData()
     }
     
@@ -29,7 +34,10 @@ class DetailViewController: UITableViewController {
         return dataList.count
     }
     
+    //MARK:- Initializing Cell
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath) as! DetailViewCell
         cell.fullNameText.text = dataList[indexPath.row].fullName
         cell.emailText.text = dataList[indexPath.row].email
@@ -39,6 +47,8 @@ class DetailViewController: UITableViewController {
         return cell
     }
     
+    // MARK:- Fetching data
+    
     func loadData() {
         do {
             dataList = try context.fetch(DataForm.fetchRequest())
@@ -46,5 +56,4 @@ class DetailViewController: UITableViewController {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
     }
-    
-    }
+}

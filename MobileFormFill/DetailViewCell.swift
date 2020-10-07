@@ -10,10 +10,13 @@ import UIKit
 
 class DetailViewCell: UITableViewCell {
     
+    // MARK:- IBOutlets
+    
     @IBOutlet weak var fullNameText: UITextField!
     @IBOutlet weak var emailText: UITextField!
     @IBOutlet weak var genderText: UITextField!
     @IBOutlet weak var skillSetText: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

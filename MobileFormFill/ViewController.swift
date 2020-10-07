@@ -10,18 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var data:DataForm!
+    // MARK:- IBOutlets
     
-    var dataList = [DataForm]()
-    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var maleButton: UIButton!
-    
     @IBOutlet weak var otherButton: UIButton!
     @IBOutlet weak var femaleButton: UIButton!
     
@@ -30,33 +27,42 @@ class ViewController: UIViewController {
     @IBOutlet weak var swiftButton: UIButton!
     @IBOutlet weak var flutterButton: UIButton!
     @IBOutlet weak var reactButton: UIButton!
+    
+    
+    // MARK:- Initializing Core Data
+    
+    var data:DataForm!
+    var dataList = [DataForm]()
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+   
     private var genderSelected = String()
     private var skillSet = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        scrollView.contentSize = CGSize(width: self.view.frame.width, height: self.view.frame.height+100)
     }
     
     
+    // MARK:- Button Actions
     
+    // Slection of skill set
     @IBAction func SkillsButtonAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         let tag = sender.tag
         
         switch tag {
-            
         case 4: updateSkills(skill: "Java")
         case 5: updateSkills(skill: "Kotlin")
         case 6: updateSkills(skill: "Swift")
         case 7: updateSkills(skill: "Flutter")
         case 8: updateSkills(skill: "React")
         default: print("Nothing selected")
-            
         }
-        
     }
     
+    // Sorting Skills
     func updateSkills(skill : String) {
         if skillSet.isEmpty || !skillSet.contains(skill) {
             skillSet.append(skill)
@@ -65,8 +71,9 @@ class ViewController: UIViewController {
         }
     }
     
+    
+    // Save Data after Vlidating
     @IBAction func SaveData(_ sender: UIButton) {
-        
         
         let name = fullNameTextField.text
         let email = emailTextField.text
@@ -74,9 +81,8 @@ class ViewController: UIViewController {
         
         
         // validate input fields
-        
         if name == "" || email == "" || password == "" || (maleButton.isSelected == false && femaleButton.isSelected == false && otherButton.isSelected == false) || (javabutton.isSelected == true && swiftButton.isSelected == true  && kotlinButton.isSelected == true && reactButton.isSelected == true && flutterButton.isSelected == true && reactButton.isSelected == true) {
-            let alertController = UIAlertController(title: "Oops", message: "Please note that all fields are required.", preferredStyle: UIAlertController.Style.alert)
+            let alertController = UIAlertController(title: "Oops", message: "All fields are Mandatory.", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
             
@@ -88,22 +94,20 @@ class ViewController: UIViewController {
         data.skills = skillSet.map { String($0) }.joined(separator: ", ")
         
         // validate Email
-        
         if email!.isValidEmail {
             data.email = email
         } else {
-            let alertController = UIAlertController(title: "Oops", message: "email not valid", preferredStyle: UIAlertController.Style.alert)
+            let alertController = UIAlertController(title: "Oops", message: "Enter Valid Email", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
             return
         }
         
         //validate Password
-        
         if password!.isValidPassword {
             print("valid password")
         } else {
-            let alertController = UIAlertController(title: "Oops", message: "Password must contain one uppercase, one lowercase, one special character and must be between 8 to 16 ", preferredStyle: UIAlertController.Style.alert)
+            let alertController = UIAlertController(title: "Oops", message: "Password must contain one uppercase, one lowercase, one special character and must be between 8 to 16 characters", preferredStyle: UIAlertController.Style.alert)
             alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
             return
@@ -112,6 +116,7 @@ class ViewController: UIViewController {
     }
     
     
+    // MARK:- Button Action for selection of Gender
     @IBAction func RadioButtonAction(_ sender: UIButton) {
         
         if sender.tag == 1 {
@@ -146,8 +151,8 @@ extension String {
         return emailText.evaluate(with: self)
     }
     var isValidPassword: Bool {
-        let passwrdRegEx = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,16}")
-        return passwrdRegEx.evaluate(with: self)
+        let passwrdText = NSPredicate(format: "SELF MATCHES %@", "^(?=.*[a-z])(?=.*[A-Z])(?=.*[$@$!%*?&])[A-Za-z\\d$@$!%*?&]{8,16}")
+        return passwrdText.evaluate(with: self)
     }
 }
 
